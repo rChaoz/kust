@@ -1,0 +1,12 @@
+[package]
+name = "kust"
+version = "0.0.0"
+edition = "2021"
+authors = ["Matei Trandafir <matei_trand@yahoo.com>"]
+description = "Kotlin-like APIs for Rust"
+readme = "README.md"
+repository = "https://github.com/rChaoz/kust"
+license = "MIT"
+# TODO keywords, categories, metadata
+
+[dependencies]
