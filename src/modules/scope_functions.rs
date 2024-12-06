@@ -1,18 +1,18 @@
 pub trait ScopeFunctions {
     /// Calls the specified function with this value as an argument and returns the result of the function.
-    /// 
+    ///
     /// Use when you need repeated access to a value in an expression.
-    /// 
+    ///
     /// # Examples
-    /// 
+    ///
     /// ```
     /// use std::fmt::Write;
     /// use kust::ScopeFunctions;
-    /// 
+    ///
     /// let input = "\
     /// 8,4,19,30,1,0
     /// 1,4,7,11,9,5";
-    /// 
+    ///
     /// let mut output = String::new();
     ///
     /// for line in input.lines() {
@@ -26,7 +26,7 @@ pub trait ScopeFunctions {
     ///             .using(|v| (v.iter().sum::<i32>() / v.len() as i32, v[v.len() / 2]))
     ///     ).unwrap();
     /// }
-    /// 
+    ///
     /// assert_eq!(output, "\
     /// Average and median: (10, 30)
     /// Average and median: (6, 11)
@@ -39,23 +39,23 @@ pub trait ScopeFunctions {
     {
         f(self)
     }
-    
+
     /// Calls the specified function with an immutable reference to `self` and returns `self`.
-    /// 
+    ///
     /// Use `also` when you want to perform a side effect using a value before returning it.
-    /// 
+    ///
     /// # Examples
-    /// 
+    ///
     /// ```
     /// use std::fmt::Write;
     /// use kust::ScopeFunctions;
-    /// 
+    ///
     /// let mut output = String::new();
-    /// 
+    ///
     /// let nums = [1, 2, 3, 4];
     /// let sum: i32 = nums.iter().map(|n| (n * 2).also(|d| writeln!(output, "{n} * 2 = {d}").unwrap())).sum();
     /// writeln!(output, "The sum is {sum}").unwrap();
-    /// 
+    ///
     /// assert_eq!(output, "\
     /// 1 * 2 = 2
     /// 2 * 2 = 4
@@ -74,7 +74,7 @@ pub trait ScopeFunctions {
     }
 
     /// Calls the specified function with a mutable reference to `self` and returns `self`.
-    /// 
+    ///
     /// Use `apply` when you want to modify an object before returning it.
     ///
     /// # Examples
