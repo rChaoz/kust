@@ -32,7 +32,7 @@ pub trait ScopeFunctions {
     /// Average and median: (6, 11)
     /// ")
     /// ```
-    fn using<R, F>(self, f: F) -> R
+    fn using<F, R>(self, f: F) -> R
     where
         Self: Sized,
         F: FnOnce(Self) -> R,
@@ -64,10 +64,10 @@ pub trait ScopeFunctions {
     /// The sum is 20
     /// ")
     /// ```
-    fn also<F>(self, f: F) -> Self
+    fn also<F, R>(self, f: F) -> Self
     where
         Self: Sized,
-        F: FnOnce(&Self),
+        F: FnOnce(&Self) -> R,
     {
         f(&self);
         self
@@ -106,10 +106,10 @@ pub trait ScopeFunctions {
     ///
     /// assert_eq!(people, [String::from("Name: Mike, age: 34"), String::from("Name: Linda, age: 25")]);
     /// ```
-    fn apply<F>(mut self, f: F) -> Self
+    fn apply<F, R>(mut self, f: F) -> Self
     where
         Self: Sized,
-        F: FnOnce(&mut Self),
+        F: FnOnce(&mut Self) -> R,
     {
         f(&mut self);
         self

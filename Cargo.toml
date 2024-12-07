@@ -1,6 +1,6 @@
 [package]
 name = "kust"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 authors = ["Matei Trandafir <matei_trand@yahoo.com>"]
 description = "Kotlin-like APIs for Rust"
